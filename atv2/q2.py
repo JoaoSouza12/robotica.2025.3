@@ -13,13 +13,11 @@ def forward_kinematics(a, q):
     - xs, ys: listas com as posições das juntas (para plot)
     """
     n = len(a)
-    # converter ângulos para radianos
     q = [math.radians(angle) for angle in q]
 
     x, y = 0, 0
     theta = 0
-    xs, ys = [0], [0]  # origem da base
-
+    xs, ys = [0], [0]  
     for i in range(n):
         theta += q[i]
         x += a[i] * math.cos(theta)
@@ -27,12 +25,11 @@ def forward_kinematics(a, q):
         xs.append(x)
         ys.append(y)
 
-    psi = math.degrees(theta)  # orientação final em graus
+    psi = math.degrees(theta)  
     return (x, y, psi, xs, ys)
 
 
-# --------------------------
-# Programa principal
+
 n = 3   # número de juntas
 a = []
 q = []
